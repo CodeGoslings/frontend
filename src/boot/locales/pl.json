@@ -1,0 +1,21 @@
+{
+    "mainNavbar": {
+        "title": "System Koordynacji Pomocy Humanitarnej",
+        "changeLanguage": "Zmień język"
+    },
+    "landingPage": {
+        "tagline": "Koordynacja pomocy, wzmacnianie społeczności",
+        "description": "Dołącz do wysiłku, aby zapewnić pomoc w kryzysowych sytuacjach. Zaloguj się lub zarejestruj, aby uzyskać dostęp do platformy.",
+        "login": "Przejdź do logowania",
+        "register": "Przejdź do rejestracji"
+    },
+    "auth": {
+        "login": "Zaloguj się",
+        "register": "Zarejestruj się",
+        "email": "Email",
+        "password": "Hasło",
+        "name": "Imię",
+        "alreadyAccount": "Masz już konto?",
+        "dontHaveAccount": "Nie masz konta?"
+    }
+}

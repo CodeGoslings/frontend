@@ -1,0 +1,21 @@
+{
+    "mainNavbar": {
+        "title": "Humanitarian Aid Coordination System",
+        "changeLanguage": "Change Language"
+    },
+    "landingPage": {
+        "tagline": "Coordinating Aid, Empowering Communities",
+        "description": "Join the effort to provide timely assistance during crises. Log in or register to access the platform.",
+        "login": "Go to Login",
+        "register": "Go to Register"
+    },
+    "auth": {
+        "login": "Login",
+        "register": "Register",
+        "email": "Email",
+        "password": "Password",
+        "name": "Name",
+        "alreadyAccount": "Already have an account?",
+        "dontHaveAccount": "Don't have an account?"
+    }
+}

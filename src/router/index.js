@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LandingPage from '@/views/LandingPageView.vue'
 import LoginRegisterPage from '@/views/RegisterView.vue'
+import MapView from '../views/MapView.vue'
 
 const routes = [
     {
@@ -21,6 +22,11 @@ const routes = [
         component: LoginRegisterPage,
         meta: { title: 'Register' },
     },
+    {
+        path: '/map',
+        name: 'Map',
+        component: MapView
+    }
 ]
 
 const router = createRouter({

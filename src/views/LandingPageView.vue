@@ -10,6 +10,11 @@
                         {{ $t('landingPage.register') }}
                     </button>
                 </div>
+                <div class="mt-4">
+                    <button class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg" @click="navigateToMap">
+                        {{ $t('landingPage.map') }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -25,6 +30,9 @@ export default {
         navigateToRegister() {
             this.$router.push({ name: 'Register' })
         },
+        navigateToMap() {
+            this.$router.push({ name: 'Map' })
+        }
     },
 }
 </script>

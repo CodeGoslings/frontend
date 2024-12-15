@@ -7,7 +7,8 @@
         "tagline": "Coordinating Aid, Empowering Communities",
         "description": "Join the effort to provide timely assistance during crises. Log in or register to access the platform.",
         "login": "Go to Login",
-        "register": "Go to Register"
+        "register": "Go to Register",
+        "map": "Go to Map"
     },
     "auth": {
         "login": "Login",

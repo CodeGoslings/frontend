@@ -7,7 +7,8 @@
         "tagline": "Koordynacja pomocy, wzmacnianie społeczności",
         "description": "Dołącz do wysiłku, aby zapewnić pomoc w kryzysowych sytuacjach. Zaloguj się lub zarejestruj, aby uzyskać dostęp do platformy.",
         "login": "Przejdź do logowania",
-        "register": "Przejdź do rejestracji"
+        "register": "Przejdź do rejestracji",
+        "map": "Przejdź do mapy"
     },
     "auth": {
         "login": "Zaloguj się",

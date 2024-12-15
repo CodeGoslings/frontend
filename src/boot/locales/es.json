@@ -7,7 +7,8 @@
         "tagline": "Coordinando Ayuda, Empoderando Comunidades",
         "description": "Únase al esfuerzo para proporcionar asistencia oportuna durante las crisis. Inicie sesión o regístrese para acceder a la plataforma.",
         "login": "Ir a Iniciar sesión",
-        "register": "Ir a Registrarse"
+        "register": "Ir a Registrarse",
+        "map": "Ir a Mapa"
     },
     "auth": {
         "login": "Iniciar sesión",

@@ -38,9 +38,22 @@ export default {
             directionsRenderer: null
         }
     },
-    mounted() {
-        this.loadGoogleMapsScript()
-        this.initMap()
+    async mounted() {
+        try {
+            await this.loadGoogleMapsScript();
+            // Wait for Google Maps to be available
+            await new Promise(resolve => {
+                if (window.google) {
+                    resolve();
+                } else {
+                    window.initMap = () => resolve();
+                }
+            });
+            await this.initMap();
+        } catch (error) {
+            console.error('Failed to initialize map:', error);
+            this.error = error.message;
+        }
     },
     methods: {
         async loadGoogleMapsScript() {

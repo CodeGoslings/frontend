@@ -14,9 +14,17 @@
         "login": "Iniciar sesión",
         "register": "Registrarse",
         "email": "Correo electrónico",
+        "enterEmail": "Introduzca el correo electrónico",
         "password": "Contraseña",
+        "enterPassword": "Introduzca la contraseña",
         "name": "Nombre",
-        "alreadyAccount": "¿Ya tienes una cuenta?",
-        "dontHaveAccount": "¿No tienes una cuenta?"
+        "enterName": "Introduzca el nombre",
+        "dontHaveAccount": "¿No tienes una cuenta?",
+        "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+        "errors": {
+            "emailRequired": "Por favor, introduzca una dirección de correo electrónico válida",
+            "passwordRequired": "Por favor, introduzca una contraseña",
+            "nameRequired": "Por favor, introduzca su nombre"
+        }
     }
 }

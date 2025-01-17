@@ -24,7 +24,9 @@
         "errors": {
             "emailRequired": "Proszę podać poprawny adres e-mail",
             "passwordRequired": "Proszę podać hasło",
-            "nameRequired": "Proszę podać swoje imię"
+            "passwordTooShort": "Hasło jest za krótkie",
+            "nameRequired": "Proszę podać swoje imię",
+            "invalidEmail": "Proszę podać poprawny adres e-mail"
         }
     }
 }

@@ -24,7 +24,9 @@
         "errors": {
             "emailRequired": "Please enter a valid email address",
             "passwordRequired": "Please enter a password",
-            "nameRequired": "Please enter your name"
+            "passwordTooShort": "Password is too short",
+            "nameRequired": "Please enter your name",
+            "invalidEmail": "Please enter a valid email address"
         }
     }
 }

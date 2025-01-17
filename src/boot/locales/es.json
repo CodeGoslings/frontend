@@ -24,7 +24,9 @@
         "errors": {
             "emailRequired": "Por favor, introduzca una dirección de correo electrónico válida",
             "passwordRequired": "Por favor, introduzca una contraseña",
-            "nameRequired": "Por favor, introduzca su nombre"
+            "passwordTooShort": "La contraseña es demasiado corta",
+            "nameRequired": "Por favor, introduzca su nombre",
+            "invalidEmail": "Por favor, introduzca una dirección de correo electrónico válida"
         }
     }
 }

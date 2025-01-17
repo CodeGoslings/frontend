@@ -14,9 +14,19 @@
         "login": "Login",
         "register": "Register",
         "email": "Email",
+        "enterEmail": "Enter email",
         "password": "Password",
+        "enterPassword": "Enter password",
         "name": "Name",
-        "alreadyAccount": "Already have an account?",
-        "dontHaveAccount": "Don't have an account?"
+        "enterName": "Enter name",
+        "alreadyHaveAccount": "Already have an account?",
+        "dontHaveAccount": "Don't have an account?",
+        "errors": {
+            "emailRequired": "Please enter a valid email address",
+            "passwordRequired": "Please enter a password",
+            "passwordTooShort": "Password is too short",
+            "nameRequired": "Please enter your name",
+            "invalidEmail": "Please enter a valid email address"
+        }
     }
 }

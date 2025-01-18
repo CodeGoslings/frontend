@@ -10,18 +10,37 @@
                     Draw Route
                 </button>
             </div>
-            <!-- Markers list -->
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-                <h2 class="text-xl font-bold mb-2">Markers</h2>
-                <ul>
-                    <li v-for="(marker, index) in markers" :key="index" class="flex items-center mb-2">
-                        <input type="checkbox" v-model="marker.selected" class="mr-2">
-                        <span class="mr-2">Marker {{ index + 1 }}</span>
-                        <button @click="removeMarker(marker)" class="px-2 py-1 bg-red-500 text-white rounded">
-                            Remove
-                        </button>
-                    </li>
-                </ul>
+            <!-- Collapsible Markers list -->
+            <div class="bg-white rounded-lg shadow-lg">
+                <button
+                    @click="isMarkersExpanded = !isMarkersExpanded"
+                    class="w-full px-4 py-2 flex justify-between items-center"
+                >
+                    <h2 class="text-xl font-bold">Markers</h2>
+                    <span class="transform transition-transform duration-200"
+                          :class="{'rotate-180': !isMarkersExpanded}">
+                        ▼
+                    </span>
+                </button>
+                <transition name="collapse">
+                    <div v-show="isMarkersExpanded" class="p-4 border-t">
+                        <ul>
+                            <li v-for="(marker, index) in markers"
+                                :key="index"
+                                class="flex items-center mb-2"
+                            >
+                                <input type="checkbox"
+                                       v-model="marker.selected"
+                                       class="mr-2">
+                                <span class="mr-2">Marker {{ index + 1 }}</span>
+                                <button @click="removeMarker(marker)"
+                                        class="px-2 py-1 bg-red-500 text-white rounded">
+                                    Remove
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </transition>
             </div>
         </div>
     </div>
@@ -35,7 +54,8 @@ export default {
             map: null,
             markers: [],
             directionsService: null,
-            directionsRenderer: null
+            directionsRenderer: null,
+            isMarkersExpanded: true
         }
     },
     async mounted() {
@@ -235,5 +255,23 @@ export default {
 
 .custom-marker.selected .pin {
     background-color: #ea4335;
+}
+
+.collapse-enter-active,
+.collapse-leave-active {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+    opacity: 0;
+    max-height: 0;
+}
+
+.collapse-enter-to,
+.collapse-leave-from {
+    opacity: 1;
+    max-height: 300px;
 }
 </style>

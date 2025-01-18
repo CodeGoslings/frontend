@@ -10,15 +10,13 @@
                     Draw Route
                 </button>
             </div>
-            <!-- Collapsible Markers list -->
             <div class="bg-white rounded-lg shadow-lg">
                 <button
                     @click="isMarkersExpanded = !isMarkersExpanded"
-                    class="w-full px-4 py-2 flex justify-between items-center"
-                >
+                    class="w-full px-4 py-2 flex justify-between items-center">
                     <h2 class="text-xl font-bold">Markers</h2>
                     <span class="transform transition-transform duration-200"
-                          :class="{'rotate-180': !isMarkersExpanded}">
+                        :class="{'rotate-180': !isMarkersExpanded}">
                         ▼
                     </span>
                 </button>
@@ -27,12 +25,16 @@
                         <ul>
                             <li v-for="(marker, index) in markers"
                                 :key="index"
-                                class="flex items-center mb-2"
-                            >
+                                class="flex items-center mb-2">
                                 <input type="checkbox"
-                                       v-model="marker.selected"
-                                       class="mr-2">
-                                <span class="mr-2">Marker {{ index + 1 }}</span>
+                                    v-model="marker.selected"
+                                    class="mr-2">
+                                <input type="text"
+                                    v-model="marker.name"
+                                    @blur="saveMarkerName(index)"
+                                    @keyup.enter="$event.target.blur()"
+                                    class="mr-2 px-2 py-1 border rounded focus:outline-none focus:border-blue-500"
+                                    :placeholder="`Marker ${index + 1}`">
                                 <button @click="removeMarker(marker)"
                                         class="px-2 py-1 bg-red-500 text-white rounded">
                                     Remove
@@ -156,8 +158,15 @@ export default {
             this.markers.push({
                 marker: marker,
                 position: location,
-                selected: false
+                selected: false,
+                name: `Marker ${this.markers.length + 1}` // Add name property
             });
+        },
+
+        saveMarkerName(index) {
+            if (!this.markers[index].name) {
+                this.markers[index].name = `Marker ${index + 1}`;
+            }
         },
 
         reloadMap() {
@@ -273,5 +282,13 @@ export default {
 .collapse-leave-from {
     opacity: 1;
     max-height: 300px;
+}
+input[type="text"] {
+    min-width: 100px;
+    background: transparent;
+}
+
+input[type="text"]:hover {
+    background: #f3f4f6;
 }
 </style>

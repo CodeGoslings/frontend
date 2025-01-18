@@ -174,14 +174,10 @@ export default {
             if (index > -1) {
                 this.markers.splice(index, 1);
                 this.reloadMap();
-            }
 
-            if (this.directionsRenderer) {
                 const selectedMarkers = this.markers.filter(m => m.selected)
                 if (selectedMarkers.length >= 2) {
                     this.drawRoute()
-                } else {
-                    this.directionsRenderer.setMap(null)
                 }
             }
         },

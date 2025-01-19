@@ -4,6 +4,9 @@
         "changeLanguage": "Zmień język"
     },
     "landingPage": {
+        "welcome": "Witaj w SKPH!",
+        "actions": "Szybkie działania",
+        "adminPanel": "Panel administratora",
         "tagline": "Koordynacja pomocy, wzmacnianie społeczności",
         "description": "Dołącz do wysiłku, aby zapewnić pomoc w kryzysowych sytuacjach. Zaloguj się lub zarejestruj, aby uzyskać dostęp do platformy.",
         "login": "Przejdź do logowania",
@@ -28,5 +31,10 @@
             "nameRequired": "Proszę podać swoje imię",
             "invalidEmail": "Proszę podać poprawny adres e-mail"
         }
+    },
+    "notAuthorized": {
+        "title": "Brak dostępu",
+        "message": "Nie masz wymaganych uprawnień, aby uzyskać dostęp do tej strony.",
+        "goToLogin": "Przejdź do logowania"
     }
 }

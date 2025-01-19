@@ -4,6 +4,9 @@
         "changeLanguage": "Change Language"
     },
     "landingPage": {
+        "welcome": "Welcome to HACS!",
+        "actions": "Quick Actions",
+        "adminPanel": "Admin Panel",
         "tagline": "Coordinating Aid, Empowering Communities",
         "description": "Join the effort to provide timely assistance during crises. Log in or register to access the platform.",
         "login": "Go to Login",
@@ -28,5 +31,10 @@
             "nameRequired": "Please enter your name",
             "invalidEmail": "Please enter a valid email address"
         }
+    },
+    "notAuthorized": {
+        "title": "Access Denied",
+        "message": "You do not have the required permissions to access this page.",
+        "goToLogin": "Go to Login"
     }
 }

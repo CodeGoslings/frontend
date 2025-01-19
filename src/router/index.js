@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LandingPage from '@/views/LandingPageView.vue'
 import LoginRegisterPage from '@/views/RegisterView.vue'
 import MapView from '../views/MapView.vue'
+import { useUserStore } from '@/stores/user'
 
 const routes = [
     {
@@ -25,8 +26,20 @@ const routes = [
     {
         path: '/map',
         name: 'Map',
-        component: MapView
-    }
+        component: MapView,
+    },
+    {
+        path: '/admin',
+        name: 'AdminPanel',
+        component: () => import('@/views/AdminPanelMockView.vue'),
+        meta: { title: 'Admin Panel', requiresAuth: true, roles: ['admin'] },
+    },
+    {
+        path: '/not-authorized',
+        name: 'NotAuthorized',
+        component: () => import('@/views/NotAuthorizedView.vue'),
+        meta: { title: 'Not Authorized' },
+    },
 ]
 
 const router = createRouter({
@@ -45,6 +58,14 @@ router.beforeEach((to, from, next) => {
     import('@/boot/i18n').then(({ setLocale }) => {
         setLocale(storedLang)
     })
+
+    const userStore = useUserStore()
+
+    if (to.meta.requiresAuth && to.meta.roles) {
+        if (!to.meta.roles.some((role) => userStore.hasRole(role))) {
+            return next({ name: 'NotAuthorized' })
+        }
+    }
 
     next()
 })

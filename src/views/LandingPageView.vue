@@ -23,20 +23,20 @@
             <!-- Box for Map and Admin -->
             <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
                 <h2 class="mb-4 text-xl font-semibold text-center">{{ $t('landingPage.actions') }}</h2>
-                <div class="flex justify-between mt-4">
-                    <button
-                        class="px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700"
-                        @click="navigateToMap"
-                    >
-                        {{ $t('landingPage.map') }}
-                    </button>
-                    <button
-                        class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700"
-                        @click="navigateToAdmin"
-                    >
-                        {{ $t('landingPage.adminPanel') }}
-                    </button>
-                </div>
+<!--                <div class="flex justify-between mt-4">-->
+<!--                    <button-->
+<!--                        class="px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700"-->
+<!--                        @click="navigateToMap"-->
+<!--                    >-->
+<!--                        {{ $t('landingPage.map') }}-->
+<!--                    </button>-->
+<!--                    <button-->
+<!--                        class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700"-->
+<!--                        @click="navigateToAdmin"-->
+<!--                    >-->
+<!--                        {{ $t('landingPage.adminPanel') }}-->
+<!--                    </button>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

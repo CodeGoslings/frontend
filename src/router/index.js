@@ -3,6 +3,8 @@ import LandingPage from '@/views/LandingPageView.vue'
 import LoginRegisterPage from '@/views/RegisterView.vue'
 import MapView from '../views/MapView.vue'
 import { useUserStore } from '@/stores/user'
+import DonorView from '@/views/DonorView.vue'
+import DonationAdminView from '@/views/DonationAdminView.vue'
 
 const routes = [
     {
@@ -24,6 +26,18 @@ const routes = [
         meta: { title: 'Register' },
     },
     {
+        path: '/donor',
+        name: 'Donor',
+        component: DonorView,
+        meta: { title: 'Donor' },
+    },
+    {
+        path: '/donation-admin',
+        name: 'DonationAdmin',
+        component: DonationAdminView,
+        meta: { title: 'Donation Admin' },
+    },
+    {
         path: '/map',
         name: 'Map',
         component: MapView,
@@ -32,7 +46,7 @@ const routes = [
         path: '/admin',
         name: 'AdminPanel',
         component: () => import('@/views/AdminPanelMockView.vue'),
-        meta: { title: 'Admin Panel', requiresAuth: true, roles: ['admin'] },
+        meta: { title: 'Admin Panel', requiresAuth: true },
     },
     {
         path: '/not-authorized',

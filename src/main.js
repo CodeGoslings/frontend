@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
 import ToggleSwitch from 'primevue/toggleswitch'
+import SelectButton from 'primevue/selectbutton';
+import Chart from 'primevue/chart';
 
 import App from './App.vue'
 import router from './router'
@@ -30,6 +32,9 @@ setLocale('en').then(() => {
     })
     app.component('FontAwesomeIcon', FontAwesomeIcon)
     app.component('ToggleSwitch', ToggleSwitch);
+    app.component('SelectButton', SelectButton);
+    // eslint-disable-next-line vue/multi-word-component-names
+    app.component('Chart', Chart);
 
     app.mount('#app')
 })

@@ -11,7 +11,12 @@
         "description": "Únase al esfuerzo para proporcionar asistencia oportuna durante las crisis. Inicie sesión o regístrese para acceder a la plataforma.",
         "login": "Ir a Iniciar sesión",
         "register": "Ir a Registrarse",
-        "map": "Ir a Mapa"
+        "map": "Ir a Mapa",
+        "liveData": "Datos en Vivo",
+        "getReport": "Obtener Informe"
+    },
+    "liveMonitoring": {
+        "liveData": "Datos en Vivo"
     },
     "donor": {
         "list": "Donaciones",
@@ -66,4 +71,4 @@
         "message": "No tienes los permisos necesarios para acceder a esta página.",
         "goToLogin": "Ir a Iniciar Sesión"
     }
-}
+},

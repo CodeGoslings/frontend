@@ -66,7 +66,6 @@ export const useUserStore = defineStore('user', {
                 throw error
             }
         },
-
         async getAdminDonationReport(year) {
             try {
                 const config = {
@@ -90,7 +89,60 @@ export const useUserStore = defineStore('user', {
                 throw error
             }
         },
-
+        async downloadAssignmentReport(year) {
+            try {
+                axiosInstance({
+                    method: 'get',
+                    responseType: 'arraybuffer',
+                    url: `/api/report/assignments/${year}`
+                }).then((response) => {
+                    let blob = new Blob([response.data], { type: 'application/pdf' })
+                    let link = document.createElement('a')
+                    link.href = window.URL.createObjectURL(blob)
+                    link.download = `assignment-report-${year}.pdf`
+                    link.click()
+                })
+            } catch (error) {
+                console.error('Download assignment report failed', error)
+                throw error
+            }
+        },
+        async downloadResourceReport(year) {
+            try {
+                axiosInstance({
+                    method: 'get',
+                    responseType: 'arraybuffer',
+                    url: `/api/report/resources/${year}`
+                }).then((response) => {
+                    let blob = new Blob([response.data], { type: 'application/pdf' })
+                    let link = document.createElement('a')
+                    link.href = window.URL.createObjectURL(blob)
+                    link.download = `resource-report-${year}.pdf`
+                    link.click()
+                })
+            } catch (error) {
+                console.error('Download resource report failed', error)
+                throw error
+            }
+        },
+        async downloadAffectedIndividualsReport() {
+            try {
+                axiosInstance({
+                    method: 'get',
+                    responseType: 'arraybuffer',
+                    url: '/api/report/individuals'
+                }).then((response) => {
+                    let blob = new Blob([response.data], { type: 'application/pdf' })
+                    let link = document.createElement('a')
+                    link.href = window.URL.createObjectURL(blob)
+                    link.download = 'affected-individuals-report.pdf'
+                    link.click()
+                })
+            } catch (error) {
+                console.error('Download affected individuals report failed', error)
+                throw error
+            }
+        },
         async getDonations() {
             try {
                 const config = {
@@ -104,7 +156,6 @@ export const useUserStore = defineStore('user', {
                 throw error
             }
         },
-
         async acceptDonation(donation) {
             try {
                 const config = {
@@ -126,7 +177,6 @@ export const useUserStore = defineStore('user', {
                 throw error
             }
         },
-
         async rejectDonation(donation) {
             try {
                 const config = {
@@ -147,8 +197,33 @@ export const useUserStore = defineStore('user', {
                 console.error('Reject donation failed', error)
                 throw error
             }
-
-
+        },
+        async getLiveAssignmentData() {
+            try {
+                const response = await axiosInstance.get('/api/report/assignments-live')
+                return response.data
+            } catch (error) {
+                console.error('Get live assignment data failed', error)
+                throw error
+            }
+        },
+        async getLiveResourceData() {
+            try {
+                const response = await axiosInstance.get('/api/report/resources-live')
+                return response.data
+            } catch (error) {
+                console.error('Get live resource data failed', error)
+                throw error
+            }
+        },
+        async getLiveIndividualData() {
+            try {
+                const response = await axiosInstance.get('/api/report/individuals-live')
+                return response.data
+            } catch (error) {
+                console.error('Get live individual data failed', error)
+                throw error
+            }
         }
     }
 })

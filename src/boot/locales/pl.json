@@ -11,7 +11,12 @@
         "description": "Dołącz do wysiłku, aby zapewnić pomoc w kryzysowych sytuacjach. Zaloguj się lub zarejestruj, aby uzyskać dostęp do platformy.",
         "login": "Przejdź do logowania",
         "register": "Przejdź do rejestracji",
-        "map": "Przejdź do mapy"
+        "map": "Przejdź do mapy",
+        "liveData": "Dane na żywo",
+        "getReport": "Pobierz raport"
+    },
+    "liveMonitoring": {
+        "liveData": "Dane na żywo"
     },
     "donor": {
         "list": "Darowizny",

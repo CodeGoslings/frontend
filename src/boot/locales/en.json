@@ -11,7 +11,13 @@
         "description": "Join the effort to provide timely assistance during crises. Log in or register to access the platform.",
         "login": "Go to Login",
         "register": "Go to Register",
-        "map": "Go to Map"
+        "map": "Go to Map",
+        "liveData": "Live Data",
+        "getReport": "Get Report",
+        "year": "Year"
+    },
+    "liveMonitoring": {
+        "liveData": "Live Data"
     },
     "donor": {
         "list": "Donations",

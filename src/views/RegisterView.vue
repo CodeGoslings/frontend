@@ -7,26 +7,77 @@
 
             <form @submit.prevent="handleSubmit" v-if="!userInfo">
                 <div v-if="!isLoginMode" class="mb-4">
-                    <label for="name" class="block mb-2 font-medium text-gray-700">{{
-                        $t('auth.name')
+                    <label for="firstName" class="block mb-2 font-medium text-gray-700">{{
+                        $t('auth.firstName')
                     }}</label>
                     <input
                         type="text"
-                        id="name"
-                        v-model="formData.name"
-                        :placeholder="$t('auth.enterName')"
+                        id="firstName"
+                        v-model="formData.firstName"
+                        :placeholder="$t('auth.enterFirstName')"
                         class="w-full px-4 py-2 border rounded-lg focus:ring focus:outline-none"
-                        @blur="validateField('name')"
+                        @blur="validateField('firstName')"
                     />
-                    <p v-if="validationErrors.name" class="text-sm text-red-500">
-                        {{ validationErrors.name }}
+                    <p v-if="validationErrors.firstName" class="text-sm text-red-500">
+                        {{ validationErrors.firstName }}
+                    </p>
+                </div>
+
+                <div v-if="!isLoginMode" class="mb-4">
+                    <label for="name" class="block mb-2 font-medium text-gray-700">{{
+                            $t('auth.middleName')
+                        }}</label>
+                    <input
+                        type="text"
+                        id="middleName"
+                        v-model="formData.middleName"
+                        :placeholder="$t('auth.enterMiddleName')"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:outline-none"
+                        @blur="validateField('middleName')"
+                    />
+                    <p v-if="validationErrors.middleName" class="text-sm text-red-500">
+                        {{ validationErrors.middleName }}
+                    </p>
+                </div>
+
+                <div v-if="!isLoginMode" class="mb-4">
+                    <label for="lastName" class="block mb-2 font-medium text-gray-700">{{
+                            $t('auth.lastName')
+                        }}</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        v-model="formData.lastName"
+                        :placeholder="$t('auth.enterLastName')"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:outline-none"
+                        @blur="validateField('lastName')"
+                    />
+                    <p v-if="validationErrors.lastName" class="text-sm text-red-500">
+                        {{ validationErrors.lastName }}
                     </p>
                 </div>
 
                 <div class="mb-4">
-                    <label for="email" class="block mb-2 font-medium text-gray-700">{{
-                        $t('auth.email')
+                    <label for="username" class="block mb-2 font-medium text-gray-700">{{
+                        $t('auth.username')
                     }}</label>
+                    <input
+                        type="text"
+                        id="username"
+                        v-model="formData.username"
+                        :placeholder="$t('auth.enterUsername')"
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:outline-none"
+                        @blur="validateField('username')"
+                    />
+                    <p v-if="validationErrors.username" class="text-sm text-red-500">
+                        {{ validationErrors.username }}
+                    </p>
+                </div>
+
+                <div v-if="!isLoginMode" class="mb-4">
+                    <label for="email" class="block mb-2 font-medium text-gray-700">{{
+                            $t('auth.email')
+                        }}</label>
                     <input
                         type="email"
                         id="email"
@@ -57,6 +108,13 @@
                     </p>
                 </div>
 
+                <div class="mb-6">
+                    <label for="isAdmin" class="block mb-2 font-medium text-gray-700">{{
+                            $t('auth.isAdmin')
+                        }}</label>
+                    <ToggleSwitch v-model="isAdmin" />
+                </div>
+
                 <button
                     type="submit"
                     class="w-full px-4 py-2 text-white transition bg-blue-500 rounded-lg hover:bg-blue-600"
@@ -71,7 +129,7 @@
                     <strong>{{ $t('auth.name') }}:</strong> {{ userInfo.name }}
                 </p>
                 <p>
-                    <strong>{{ $t('auth.email') }}:</strong> {{ userInfo.email }}
+                    <strong>{{ $t('auth.username') }}:</strong> {{ userInfo.username }}
                 </p>
                 <button
                     @click="logout"
@@ -96,14 +154,17 @@
 
 <script>
 import { useUserStore } from '@/stores/user'
-import axios from '@/helpers/axios'
 
 export default {
     data() {
         return {
             isLoginMode: true,
+            isAdmin: false,
             formData: {
-                name: '',
+                firstName: '',
+                middleName: '',
+                lastName: '',
+                username: '',
                 email: '',
                 password: '',
             },
@@ -121,7 +182,7 @@ export default {
     methods: {
         toggleMode() {
             this.isLoginMode = !this.isLoginMode
-            this.formData = { name: '', email: '', password: '' }
+            this.formData = { firstName: '', middleName: '', lastName: '', username: '', email: '', password: '' }
         },
 
         validateField(field) {
@@ -132,11 +193,9 @@ export default {
                 if (!value) {
                     this.validationErrors.name = this.$t('auth.errors.nameRequired')
                 }
-            } else if (field === 'email') {
+            } else if (field === 'username') {
                 if (!value) {
-                    this.validationErrors.email = this.$t('auth.errors.emailRequired')
-                } else if (!/\S+@\S+\.\S+/.test(value)) {
-                    this.validationErrors.email = this.$t('auth.errors.invalidEmail')
+                    this.validationErrors.email = this.$t('auth.errors.usernameRequired')
                 }
             } else if (field === 'password') {
                 if (!value) {
@@ -149,56 +208,49 @@ export default {
 
         async handleSubmit() {
             if (this.isLoginMode) {
-                const requiredFields = ['email', 'password']
+                const requiredFields = ['username', 'password']
                 requiredFields.forEach(this.validateField)
                 if (Object.values(this.validationErrors).some((error) => error)) {
                     return
                 }
 
                 try {
-                    await this.userStore.login({
-                        email: this.formData.email,
+                    await this.userStore.login(this.isAdmin,{
+                        username: this.formData.username,
                         password: this.formData.password,
                     })
                     alert(this.$t('auth.loginSuccess'))
-                    this.fetchUserInfo()
+
+                    if (this.isAdmin) this.navigateToDonationAdmin()
+                    else this.navigateToDonor()
+
+                    // await this.fetchUserInfo()
                 } catch (error) {
                     console.error('Login failed', error)
                     alert(this.$t('auth.loginFailure'))
                 }
             } else {
-                const requiredFields = ['name', 'email', 'password']
+                const requiredFields = ['firstName', 'middleName', 'lastName', 'username', 'password']
                 requiredFields.forEach(this.validateField)
                 if (Object.values(this.validationErrors).some((error) => error)) {
                     return
                 }
 
                 try {
-                    await this.userStore.register({
-                        name: this.formData.name,
+                    await this.userStore.register(this.isAdmin,{
+                        firstName: this.formData.firstName,
+                        middleName: this.formData.middleName,
+                        lastName: this.formData.lastName,
+                        userName: this.formData.username,
                         email: this.formData.email,
                         password: this.formData.password,
                     })
-                    alert(`${this.$t('auth.registered')} ${this.formData.name}, ${this.formData.email}`)
+                    alert(`${this.$t('auth.registered')} ${this.formData.username}, ${this.formData.email}`)
                     this.toggleMode()
                 } catch (error) {
                     console.error('Registration failed', error)
                     alert(this.$t('auth.registerFailure'))
                 }
-            }
-        },
-
-        async fetchUserInfo() {
-            try {
-                const response = await axios.get('/user', {
-                    headers: {
-                        Authorization: `Bearer ${this.userStore.token}`,
-                    },
-                })
-                this.userInfo = response.data
-            } catch (error) {
-                console.error('Error fetching user info', error)
-                alert(this.$t('auth.userInfoError'))
             }
         },
 
@@ -212,23 +264,16 @@ export default {
         updateMode() {
             this.isLoginMode = this.$route.query.mode === 'login'
         },
-    },
 
-    watch: {
-        'userStore.token'(newToken) {
-            if (newToken) {
-                this.fetchUserInfo()
-            } else {
-                this.userInfo = null
-            }
+        navigateToDonor() {
+            this.$router.push({ name: 'Donor' })
+        },
+
+        navigateToDonationAdmin() {
+            this.$router.push({ name: 'DonationAdmin' })
         },
     },
-
     mounted() {
-        if (this.userStore.token) {
-            this.fetchUserInfo()
-        }
-
         this.updateMode()
     },
 }

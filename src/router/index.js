@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LandingPage from '@/views/LandingPageView.vue'
 import LoginRegisterPage from '@/views/RegisterView.vue'
-import MapView from '../views/MapView.vue'
+// import MapView from '../views/MapView.vue'
 import { useUserStore } from '@/stores/user'
+import DonorView from '@/views/DonorView.vue'
+import DonationAdminView from '@/views/DonationAdminView.vue'
+import LiveDataMonitoring from '@/views/LiveDataMonitoring.vue'
 
 const routes = [
     {
@@ -24,22 +27,40 @@ const routes = [
         meta: { title: 'Register' },
     },
     {
-        path: '/map',
-        name: 'Map',
-        component: MapView,
+        path: '/donor',
+        name: 'Donor',
+        component: DonorView,
+        meta: { title: 'Donor' },
     },
     {
-        path: '/admin',
-        name: 'AdminPanel',
-        component: () => import('@/views/AdminPanelMockView.vue'),
-        meta: { title: 'Admin Panel', requiresAuth: true, roles: ['admin'] },
+        path: '/donation-admin',
+        name: 'DonationAdmin',
+        component: DonationAdminView,
+        meta: { title: 'Donation Admin' },
     },
     {
-        path: '/not-authorized',
-        name: 'NotAuthorized',
-        component: () => import('@/views/NotAuthorizedView.vue'),
-        meta: { title: 'Not Authorized' },
-    },
+        path: '/live-data-monitoring',
+        name: 'LiveDataMonitoring',
+        component: LiveDataMonitoring,
+        meta: { title: 'Live Data Monitoring' },
+    }
+    // {
+    //     path: '/map',
+    //     name: 'Map',
+    //     component: MapView,
+    // },
+    // {
+    //     path: '/admin',
+    //     name: 'AdminPanel',
+    //     component: () => import('@/views/AdminPanelMockView.vue'),
+    //     meta: { title: 'Admin Panel', requiresAuth: true },
+    // },
+    // {
+    //     path: '/not-authorized',
+    //     name: 'NotAuthorized',
+    //     component: () => import('@/views/NotAuthorizedView.vue'),
+    //     meta: { title: 'Not Authorized' },
+    // },
 ]
 
 const router = createRouter({
